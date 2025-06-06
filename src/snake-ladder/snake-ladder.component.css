@@ -1,0 +1,287 @@
+.backBtn{
+    display: flex;
+    margin-bottom: 10px;
+}
+.white {
+  background-color: #70caf0;
+}
+
+.black {
+  background-color: rgb(222, 213, 213);
+}
+
+.square {
+  width: 50px;
+  height: 40px;
+  vertical-align: middle;
+  font-size: 10px;
+  line-height: 60px;
+  border: 1px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.middleBox{
+    width: 500px;
+    
+}
+
+
+.ladder1{
+    position: absolute;
+    top: 8%;
+    left: 16%;
+}
+
+.ladder1>img{
+    width: 100px;
+    height: 140px;
+    transform: rotate(20deg);
+}
+
+.ladder2{
+    position: absolute;
+    top: 14%;
+    left: 45%;
+    transform: rotate(120deg);
+}
+
+.ladder2>img{
+    width: 110px;
+    height: 200px;
+}
+
+.ladder3{
+    position: absolute;
+    top: 60%;
+    left: 39%;
+}
+
+.ladder3>img{
+    width: 100px;
+    height: 115px;
+    transform: rotate(10deg);
+}
+
+.ladder4{
+    position: absolute;
+    top: 53%;
+    left: 79%;
+}
+
+.ladder4>img{
+    width: 100px;
+    height: 60px;
+    transform: rotateY(-50deg);
+}
+
+.ladder5{
+    position: absolute;
+    top: 2%;
+    left: 68%;
+}
+
+.ladder5>img{
+    width: 100px;
+    height: 115px;
+    transform: rotateY(-30deg);
+}
+
+.turn{
+    color: green;
+    position: absolute;
+    left: -20px;
+}
+
+.diceCircle{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.diceCircle>img{
+    width: 40px;
+    height: 40px;
+    
+}
+
+.snake1{
+    position: absolute;
+    top: 42%;
+    left: 52%;
+}
+
+.snake1>img{
+    width: 100px;
+    height: 100px;
+}
+
+.snake2{
+    position: absolute;
+    top: 3%;
+    left: 16%;
+}
+
+.snake2>img{
+    width: 100px;
+    height: 270px;
+    transform: rotate(-5deg);
+}
+
+.snake3{
+    position: absolute;
+    top:65%;
+    left: 11%;
+}
+
+.snake3>img{
+    width: 150px;
+    height: 130px;
+}
+
+.snake4{
+    position: absolute;
+    top:22%;
+    left: 60%;
+}
+
+.snake4>img{
+    width: 130px;
+    height: 70px;
+    transform: rotateY(180deg);
+}
+
+.snake5{
+    position: absolute;
+    top:72%;
+    left: 54%;
+}
+
+.snake5>img{
+    width: 100px;
+    height: 60px;
+    transform: rotateY(200deg);
+}
+
+.user1{
+    color: rgb(75, 67, 172) !important;
+    font-size: 10px !important;
+    margin-right: 5px;
+}
+
+.user2{
+    color: rgb(143, 69, 86) !important;
+    font-size: 10px !important;
+    margin-right: 5px;
+}
+
+.defaultUser1{
+    position: absolute;
+    top: 92%;
+    left: -1%;
+    color: rgb(75, 67, 172);
+    font-size: 10px;
+    margin-right: 5px;
+}
+
+.defaultUser2{
+    position: absolute;
+    top: 95%;
+    left: -1%;
+    color: rgb(143, 69, 86);
+    font-size: 10px;
+    margin-right: 5px;
+}
+
+.dice-icon {
+    font-size: 30px;
+    transition: transform 1.5s ease-in-out;
+}
+
+.dice1{
+    color: rgb(75, 67, 172);
+}
+
+.dice2{
+    color: rgb(143, 69, 86);
+}
+
+.rolling {
+    animation: spin 1.5s ease-in-out;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateX(720deg) rotateY(720deg);
+    }
+}
+
+.main{
+    position: relative;
+}
+
+.BtnDiv{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 2px;
+  border-radius: 20px;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.startBtn{
+  width: 20%;
+  height: 13%;
+  font-size: 1.25rem;
+  font-weight: bold;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.opponentPlayer{
+    width: 100px;
+    height: 100px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.opponentPlayer>button{
+    width: 100%;
+    height: 100%;
+}
+
+.opponentComputer{
+    margin-left: 10px;
+    width: 100px;
+    height: 100px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.opponentComputer>button{
+    width: 100%;
+    height: 100%;
+}
+
+.aboutTurn{
+    margin-left: 17.5rem;
+    height: 40px;
+    color: rgb(218, 211, 211);
+    font-size: 30px;
+    font-weight: bold;
+    /* background-color: aqua; */
+    /* background: transparent; */
+    text-shadow: 2px 4px 4px #000000;
+}

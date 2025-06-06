@@ -1,0 +1,156 @@
+<div class="main">
+    <div class="row backBtn mt-2 ">
+        <button class="btn col-1" routerLink=""><i class="fa-solid fa-arrow-left"></i></button>
+        <div class="aboutTurn col-5" *ngIf="withComputer && turnPlayer1">{{user1}}'s Turn</div>
+        <div class="aboutTurn col-5" *ngIf="withComputer && turnComputer">Computer's Turn</div>
+        <div class="aboutTurn col-5" *ngIf="gameStarted && !withComputer && turnPlayer1 ">{{Info?.user1}}'s Turn</div>
+        <div class="aboutTurn col-5" *ngIf="gameStarted && !withComputer && turnPlayer2">{{Info?.user2}}'s Turn</div>
+    </div>
+    <div class="row gap-4 flex-nowrap justify-content-md-center">
+        <div class="player1 col-2 col-xs-2 col-sm-2 col-md-2 border d-flex justify-content-center align-items-center flex-column ">
+            <h4 class="text-center" *ngIf="!withComputer">{{Info?.user1}}</h4>
+            <h4 class="text-center" *ngIf="withComputer">{{user1}}</h4>
+            <div class="d-flex justify-content-center align-items-center position-relative">
+                <div class="turn" *ngIf="turnPlayer1"><i class="fa-solid fa-arrow-right"></i></div>
+                <button class="diceCircle" (click)="rollDice1()" [disabled]="isRolling1" >
+                    <fa-icon [icon]="currentFace1" class="dice-icon dice1" [ngClass]=
+                            "{ 'rolling': isRolling1 }"></fa-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="middleBox position-relative col-6 col-xs-6  col-sm-6 col-md-6">
+            <div *ngFor="let row of board; let rowIndex = index" class="d-flex justify-content-center align-items-center">
+                <div *ngFor="let square of row; let colIndex = index" class="square" 
+                [ngClass]="getSquareColor(rowIndex, colIndex)">
+                    <ng-container *ngIf="board[rowIndex][colIndex] == player1"><i class="user1 fa-solid fa-circle-user"></i></ng-container>
+                    <ng-container *ngIf="board[rowIndex][colIndex] == player2"><i class="user2 fa-solid fa-circle-user"></i></ng-container>
+                    {{ board[rowIndex][colIndex]}} 
+                </div>
+            </div>
+            <ng-container *ngIf="player1==0"><i class="defaultUser1 fa-solid fa-circle-user"></i></ng-container>
+            <ng-container *ngIf="player2==0"><i class="defaultUser2 fa-solid fa-circle-user"></i></ng-container>
+            <div class="ladder1">
+                <img src="../assets/ladder.png" alt="">
+            </div>
+            <div class="ladder2">
+                <img src="../assets/ladder.png" alt="">
+            </div>
+            <div class="ladder3">
+                <img src="../assets/ladder.png" alt="">
+            </div>
+            <div class="ladder4">
+                <img src="../assets/ladder.png" alt="">
+            </div>
+            <div class="ladder5">
+                <img src="../assets/ladder.png" alt="">
+            </div>
+            <div class="snake1">
+                <img src="../assets/snake2.png" alt="">
+            </div>
+            <div class="snake2">
+                <img src="../assets/snake2.png" alt="">
+            </div>
+            <div class="snake3">
+                <img src="../assets/snake2.png" alt="">
+            </div>
+            <div class="snake4">
+                <img src="../assets/snake2.png" alt="">
+            </div>
+            <div class="snake5">
+                <img src="../assets/snake2.png" alt="">
+            </div>
+        </div>
+
+        <div class="player2 col-2 col-xs-2 col-sm-2 col-md-2 border d-flex justify-content-center align-items-center flex-column">
+            <h4 *ngIf="!withComputer">{{Info?.user2}}</h4>
+            <h4 *ngIf="withComputer">Computer</h4>
+            <div class="d-flex justify-content-center align-items-center position-relative">
+                <div class="turn" *ngIf="turnPlayer2 && !withComputer"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="turn" *ngIf="turnComputer && withComputer"><i class="fa-solid fa-arrow-right"></i></div>
+                <button class="diceCircle" (click)="rollDice2()" [disabled]="isRolling2 && turnComputer" >
+                    <fa-icon [icon]="currentFace2" class="dice-icon dice2" [ngClass]=
+                            "{ 'rolling': isRolling2 }"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row col-12  justify-content-md-center m-2">
+        <button class="btn btn-dark col-1 fw-bold border rounded" (click)="reset()">Reset</button>
+    </div>
+
+    <div class="BtnDiv d-flex justify-content-center align-items-center flex-column" *ngIf="!gameStarted">
+        <h4>Select Opponents</h4>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="opponentPlayer">
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-user"></i></button>
+                <p class="text-center">Player</p>
+            </div>
+            <div class="opponentComputer">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-robot" ></i></button>
+                <p class="text-center">Computer</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- select opponent -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="!withPlayer && !withComputer">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Select Opponents</h5>
+      </div>
+      <div class="modal-body">
+        <form #register="ngForm">
+            <div class="mb-3">
+                <label for="player1" class="form-label">Player Name</label>
+                <input type="text" #playerOne="ngModel" class="form-control" id="player1" name="player1" [(ngModel)]="user1" placeholder="Enter player name" required>
+                <em class="text-danger" *ngIf="playerOne.errors?.['required'] && (playerOne.touched || playerOne.dirty)">Player Name field is required</em>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="register.invalid" (click)="startGameWithComputer(register)">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- Model for registration -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Register</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #register="ngForm">
+            <div class="mb-3">
+                <label for="player1" class="form-label">Player1</label>
+                <input type="text" #playerOne="ngModel" class="form-control" id="player1" name="player1" [(ngModel)]="user1" placeholder="Enter player1 name" required>
+                <em class="text-danger" *ngIf="playerOne.errors?.['required'] && (playerOne.touched || playerOne.dirty)">Player1 field is required</em>
+            </div>
+            <div class="mb-3">
+                <label for="player2" class="form-label">Player2</label>
+                <input type="text" #playerTwo="ngModel" class="form-control" id="player2" name="player2" [(ngModel)]="user2" placeholder="Enter Player2 name" required>
+                <em class="text-danger" *ngIf="playerTwo.errors?.['required'] && (playerTwo.touched || playerTwo.dirty)">Player2 field is required</em>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="register.invalid" (click)="startGame(register)">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+

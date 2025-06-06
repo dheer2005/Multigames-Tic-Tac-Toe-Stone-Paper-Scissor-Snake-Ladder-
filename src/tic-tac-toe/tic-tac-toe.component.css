@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    margin: 1rem;
+    text-align: center;
+}
+
+.main{
+    width: 100%;
+    height: 50%;
+}
+
+.game{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.box{
+    width: 4.125rem;  
+    height: 4.125rem;
+    border-radius: 5px;
+}
+
+.restBtn{
+    margin-top: 40px;
+    /* margin-left: 35%; */
+    width: 7.75rem;
+    height: 2.875rem;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.btn>i{
+    font-size: 20px;
+}
+
+.ticTacToeMain{
+    position: relative;
+}
+
+.BtnDiv{
+  position: absolute;
+  width: 100%;
+  height: 31rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  border-radius: 12px;
+  color: aliceblue;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.opponentPlayer{
+    width: 120px;
+    height: 120px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.opponentPlayer>button{
+    width: 100%;
+    height: 100%;
+}
+
+.opponentPlayer>button>i{
+    font-size: 30px;
+}
+
+.opponentComputer{
+    margin-left: 10px;
+    width: 120px;
+    height: 120px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.opponentComputer>button{
+    width: 100%;
+    height: 100%;
+}
+
+.opponentComputer>button>i{
+    font-size: 30px;
+}
+
+.aboutTurn{
+    text-align: center;
+    padding-right: 80px;
+    height: 40px;
+    color: rgb(140, 192, 207);
+    font-size: 1.875rem;
+    font-weight: bold;
+    text-shadow: 2px 4px 4px #bebaba;
+}

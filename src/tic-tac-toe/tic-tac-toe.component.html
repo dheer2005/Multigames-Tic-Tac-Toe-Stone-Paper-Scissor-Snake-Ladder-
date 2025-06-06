@@ -1,0 +1,51 @@
+<div class="ticTacToeMain">
+    <div class="row backBtn mt-2" >
+        <button class="btn col-1" routerLink=""><i class="fa-solid fa-arrow-left"></i></button>
+        <div class="aboutTurn col-11" *ngIf="!showResult && withComputer && turnO">Player O's Turn</div>
+        <div class="aboutTurn col-11" *ngIf="!showResult && withComputer && !turnO">Computer's Turn</div>
+        <div class="aboutTurn col-11" *ngIf="!showResult && gameStarted && !withComputer && turnO ">Player O's Turn</div>
+        <div class="aboutTurn col-11" *ngIf="!showResult && gameStarted && !withComputer && !turnO">Player X's Turn</div>
+        <div class="result" *ngIf="showResult">
+            <h1 id="winner" class=" text-secondary fw-bold">{{ winnerMessage }}</h1>
+        </div>
+    </div>
+    <div class="row mt-5">
+
+        <section class="main-section">
+            <div class="main">
+                <div class="game">
+                    <div class="d-flex flex-column">
+                        <div class="d-flex my-1" *ngFor="let row of [0, 1, 2]">
+                            <ng-container *ngFor="let col of [0, 1, 2]">
+                                <div>
+                                    <button 
+                                        class="box m-1 fs-2 text-secondary fw-bold" 
+                                        (click)="handleClick(row * 3 + col)">
+                                        {{ board[row * 3 + col] }}
+                                    </button>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <button class="restBtn mt-3" (click)="resetGame()">Reset</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="BtnDiv d-flex justify-content-center align-items-center flex-column" *ngIf="!gameStarted">
+        <h3>Select Opponents</h3>
+        <div class="d-flex justify-content-center align-items-center mt-3">
+            <div class="opponentPlayer">
+                <button type="button" class="btn btn-light " (click)="startWithComputer()" ><i class="fa-solid fa-user"></i></button>
+                <p class="text-center">1 Player</p>
+            </div>
+            <div class="opponentComputer">
+                <button type="button" class="btn btn-dark" (click)="startGame()"><i class="fa-solid fa-user"></i><i class="ms-1 fa-solid fa-user"></i></button>
+                <p class="text-center">2 Player</p>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+

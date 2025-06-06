@@ -1,0 +1,33 @@
+<div class="backTitle">
+    <button class="btn col-1" routerLink=""><i class="fa-solid fa-arrow-left"></i></button>
+    <p class="title">Rock Paper Scissors</p>
+</div>
+<div class="choices">
+    <div class="choice" id="rock" (click)="playGame(0)">
+    <img src="../assets/rock.png" alt="loading"/>
+    </div>
+    <div class="choice" id="paper" (click)="playGame(1)">
+    <img src="../assets/paper.png" alt="loading" />
+    </div>
+    <div class="choice" id="scissors" (click)="playGame(2)">
+    <img src="../assets/scissors.png" alt="loading"/>
+    </div>
+</div>
+
+<div class="score-board">
+    <div class="score">
+    <p id="user-score">{{userScore}}</p>
+    <p>You</p>
+    </div>
+    <div class="score">
+    <p id="comp-score">{{compScore}}</p>
+    <p>Computer</p>
+    </div>
+</div>
+
+<div class="msg-container text-center">
+    <p id="msg" *ngIf="!gameStarted">Play your move</p>
+    <p id="msg" *ngIf="userWin && gameStarted && !Draw">{{Winmsg}}</p>
+    <p id="msg" *ngIf="!userWin && gameStarted && !Draw">{{Losemsg}}</p>
+    <p id="msg" *ngIf="Draw && gameStarted">{{Drawmsg}}</p>
+</div>

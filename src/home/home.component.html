@@ -1,0 +1,29 @@
+<div>
+    <h2 class="text-center fw-bold">Multi-Games</h2>
+</div>
+
+<div class="row m-4 gap-5" style="height: 480px;">
+    <div class="col-2 col-sm-2 col-md-2 border rounded border-dark" style="height: 510px;">
+        <table class="text-center table ">
+            <thead>
+                <tr>
+                    <th>Games</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><button class="btn btn-outline-dark fw-bold" routerLink="tic-tac-toe" >Tic-Tac-Toe</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-outline-primary fw-bold" routerLink="snake-ladder">Snake-Ladder</button></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-outline-info fw-bold" routerLink="stone-paper-scissor">Stone-Paper-Scissor</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-9 col-sm-9 col-md-9 border rounded border-primary">
+        <router-outlet></router-outlet>
+    </div>
+</div>
