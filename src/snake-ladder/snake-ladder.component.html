@@ -13,8 +13,9 @@
             <div class="d-flex justify-content-center align-items-center position-relative">
                 <div class="turn" *ngIf="turnPlayer1"><i class="fa-solid fa-arrow-right"></i></div>
                 <button class="diceCircle" (click)="rollDice1()" [disabled]="isRolling1" >
-                    <fa-icon [icon]="currentFace1" class="dice-icon dice1" [ngClass]=
-                            "{ 'rolling': isRolling1 }"></fa-icon>
+                    <!-- <fa-icon [icon]="currentFace1" class="dice-icon dice1" [ngClass]=
+                            "{ 'rolling': isRolling1 }"></fa-icon> -->
+                    <i class="fa-solid dice-icon dice1" [ngClass]="[currentFace1, isRolling1 ? 'rolling' : '']"></i>
                 </button>
             </div>
         </div>
@@ -69,8 +70,9 @@
                 <div class="turn" *ngIf="turnPlayer2 && !withComputer"><i class="fa-solid fa-arrow-right"></i></div>
                 <div class="turn" *ngIf="turnComputer && withComputer"><i class="fa-solid fa-arrow-right"></i></div>
                 <button class="diceCircle" (click)="rollDice2()" [disabled]="isRolling2 && turnComputer" >
-                    <fa-icon [icon]="currentFace2" class="dice-icon dice2" [ngClass]=
-                            "{ 'rolling': isRolling2 }"></fa-icon>
+                    <!-- <fa-icon [icon]="currentFace2" class="dice-icon dice2" [ngClass]=
+                            "{ 'rolling': isRolling2 }"></fa-icon> -->
+                    <i class="fa-solid dice-icon dice2" [ngClass]="[currentFace2, isRolling2 ? 'rolling' : '']"></i>
                 </button>
             </div>
         </div>

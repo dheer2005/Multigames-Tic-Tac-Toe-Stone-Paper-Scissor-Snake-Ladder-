@@ -2,23 +2,21 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix }
-  from '@fortawesome/free-solid-svg-icons';
 import { playersInfo } from '../Model/playerInfoModel.Model';
 
 @Component({
   selector: 'app-snake-ladder',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink, FontAwesomeModule],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './snake-ladder.component.html',
   styleUrl: './snake-ladder.component.css'
 })
 export class SnakeLadderComponent {
-  diceFaces = [faDiceOne, faDiceTwo, faDiceThree, faDiceFour, faDiceFive, faDiceSix];
-  currentFace1 = faDiceOne;
+  
+  diceFaces = ['fa-dice-one', 'fa-dice-two', 'fa-dice-three', 'fa-dice-four', 'fa-dice-five', 'fa-dice-six'];
+  currentFace1 = 'fa-dice-one';
+  currentFace2 = 'fa-dice-one';
   isRolling1 = false;
-  currentFace2 = faDiceOne;
   isRolling2 = false;
   count: number = 1;
   board: any[][] = [];
@@ -74,8 +72,8 @@ export class SnakeLadderComponent {
   reset() {
     this.player1 = 0;
     this.player2 = 0;
-    this.currentFace1 = faDiceOne;
-    this.currentFace2 = faDiceOne;
+    this.currentFace1 = 'fa-dice-one';
+    this.currentFace2 = 'fa-dice-one';
     this.turnPlayer1 = true;
     this.turnPlayer2 = false;
   }
@@ -96,7 +94,7 @@ export class SnakeLadderComponent {
         if (this.player1 + randomNumber + 1 <= 100) {
           this.player1 += randomNumber + 1;
           
-          if (this.currentFace1 == faDiceSix) {
+          if (this.currentFace1 == 'fa-dice-six') {
             this.turnPlayer1 = true;
             this.turnPlayer2 = false;
             this.turnComputer = false;
@@ -106,8 +104,8 @@ export class SnakeLadderComponent {
             alert("Player 1 wins");
             this.player1 = 0;
             this.player2 = 0;
-            this.currentFace1 = faDiceOne;
-            this.currentFace2 = faDiceOne;
+            this.currentFace1 = 'fa-dice-one';
+            this.currentFace2 = 'fa-dice-one';
             this.turnPlayer1 = true;
             this.turnPlayer2 = false;
             return;
@@ -193,7 +191,7 @@ export class SnakeLadderComponent {
           this.player2 += randomNumber + 1;
           this.turnPlayer1 = true;
           this.turnPlayer2 = false;
-          if (this.currentFace2 == faDiceSix) {
+          if (this.currentFace2 == 'fa-dice-six') {
             this.turnPlayer1 = false;
             this.turnPlayer2 = true;
           }
@@ -201,8 +199,8 @@ export class SnakeLadderComponent {
             alert("Player2 wins");
             this.player1 = 0;
             this.player2 = 0;
-            this.currentFace1 = faDiceOne;
-            this.currentFace2 = faDiceOne;
+            this.currentFace1 = 'fa-dice-one';
+            this.currentFace2 = 'fa-dice-one';
             this.turnPlayer1 = true;
             this.turnPlayer2 = false;
           }
@@ -282,7 +280,7 @@ export class SnakeLadderComponent {
           this.turnPlayer1 = true;
           this.turnComputer = false;
 
-          if (this.currentFace2 == faDiceSix) {
+          if (this.currentFace2 == 'fa-dice-six') {
             this.turnPlayer1 = false;
             this.turnComputer = true;
             setTimeout(() => {
@@ -294,8 +292,8 @@ export class SnakeLadderComponent {
             alert("Player2 wins");
             this.player1 = 0;
             this.player2 = 0;
-            this.currentFace1 = faDiceOne;
-            this.currentFace2 = faDiceOne;
+            this.currentFace1 = 'fa-dice-one';
+            this.currentFace2 = 'fa-dice-one';
             this.turnPlayer1 = true;
             this.turnPlayer2 = false;
           }

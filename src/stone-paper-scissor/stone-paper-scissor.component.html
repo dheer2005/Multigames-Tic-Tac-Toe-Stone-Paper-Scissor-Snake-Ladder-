@@ -1,33 +1,58 @@
-<div class="backTitle">
+<div class="row backTitle ">
     <button class="btn col-1" routerLink=""><i class="fa-solid fa-arrow-left"></i></button>
-    <p class="title">Rock Paper Scissors</p>
+    <p class="title text-center col-10">Rock Paper Scissors</p>
 </div>
-<div class="choices">
-    <div class="choice" id="rock" (click)="playGame(0)">
-    <img src="../assets/rock.png" alt="loading"/>
+
+<div class="row choices">
+    <div class="userSection col-1">
+        <div class="score">
+            <p id="user-score">{{userScore}}</p>
+            <p class="fw-bold">You</p>
+        </div>
     </div>
-    <div class="choice" id="paper" (click)="playGame(1)">
-    <img src="../assets/paper.png" alt="loading" />
+    <div class="middle col-9">
+        <div class="row justify-content-md-center">
+            <div class="choice" id="rock" (click)="playGame(0)">
+                <img src="../assets/rock.png" alt="loading"/>
+            </div>
+            <div class="choice" id="paper" (click)="playGame(1)">
+                <img src="../assets/paper.png" alt="loading" />
+            </div>
+            <div class="choice" id="scissors" (click)="playGame(2)">
+                <img src="../assets/scissors.png" alt="loading"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="resultContainer text-center">
+                <p id="resultMsg" *ngIf="userWin && gameStarted && !Draw">{{Winmsg}}</p>
+                <p id="resultMsg" *ngIf="!userWin && gameStarted && !Draw">{{Losemsg}}</p>
+                <p id="resultMsg" *ngIf="Draw && gameStarted">{{Drawmsg}}</p>
+            </div>
+        </div>
+        <div class="bothChooses mt-2 row justify-content-md-center">
+            <div class="userChoose col-2" *ngIf="userChoice">
+                <div *ngIf="userChoice == 'rock'"><img src="../assets/rock.png" alt="loading"/></div>
+                <div *ngIf="userChoice == 'paper'"><img src="../assets/paper.png" alt="loading"/></div>
+                <div *ngIf="userChoice == 'scissor'"><img src="../assets/scissors.png" alt="loading"/></div>
+            </div>
+            <div class="VS col-2 text-center" *ngIf="userChoice && compChoice">VS</div>
+            <div class="compChoose col-2" *ngIf="compChoice">
+                <div *ngIf="compChoice == 'rock'"><img src="../assets/rock.png" alt="loading"/></div>
+                <div *ngIf="compChoice == 'paper'"><img src="../assets/paper.png" alt="loading"/></div>
+                <div *ngIf="compChoice == 'scissor'"><img src="../assets/scissors.png" alt="loading"/></div>
+            </div>
+        </div>
     </div>
-    <div class="choice" id="scissors" (click)="playGame(2)">
-    <img src="../assets/scissors.png" alt="loading"/>
+    <div class="compSection col-1 ">
+        <div class="score">
+            <p id="comp-score">{{compScore}}</p>
+            <p class="fw-bold">Computer</p>
+        </div>
     </div>
 </div>
 
-<div class="score-board">
-    <div class="score">
-    <p id="user-score">{{userScore}}</p>
-    <p>You</p>
-    </div>
-    <div class="score">
-    <p id="comp-score">{{compScore}}</p>
-    <p>Computer</p>
-    </div>
-</div>
 
-<div class="msg-container text-center">
-    <p id="msg" *ngIf="!gameStarted">Play your move</p>
-    <p id="msg" *ngIf="userWin && gameStarted && !Draw">{{Winmsg}}</p>
-    <p id="msg" *ngIf="!userWin && gameStarted && !Draw">{{Losemsg}}</p>
-    <p id="msg" *ngIf="Draw && gameStarted">{{Drawmsg}}</p>
+<div class="row mt-5  justify-content-md-center">
+    <button class="col-2 btn btn-outline-primary fw-bold" *ngIf="!gameStarted" disabled>Play your move</button>
+    <button class="btn btn-outline-dark col-2 fw-bold" *ngIf="gameStarted" (click)="resetGame()">Reset</button>
 </div>

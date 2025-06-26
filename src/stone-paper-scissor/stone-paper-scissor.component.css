@@ -10,8 +10,6 @@
   font-size: 30px;
   font-weight: bold;
   margin-top: 20px;
-  margin-left: 23%;
-  padding: 20px;
   border-radius: 10px;
   height: 4rem;
   display: flex;
@@ -34,18 +32,47 @@
   background-color: #081b31;
 }
 
-img {
+.choice>img {
   height: 110px;
   width: 110px;
   object-fit: cover;
   border-radius: 50%;
 }
 
-.choices {
+
+.userChoose>div>img{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.compChoose>div>img{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.compChoose>div
+{
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+}
+.VS{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bothChooses{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+}
+
+.choices {
+  margin-left: 40px;
+  height: 50%;
   margin-top: 2rem;
 }
 
@@ -74,10 +101,15 @@ img {
 }
 
 .msg-container {
-
-    margin-left: 15px;
-    margin-top: 1rem;
+  margin-left: 15px;
+  margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.resultContainer{
+  font-size: 1.5rem;
+  font-weight: bold;
+  /* color: ; */
 }
 
 #msg {
