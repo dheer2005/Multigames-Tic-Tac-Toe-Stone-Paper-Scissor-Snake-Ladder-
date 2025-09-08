@@ -47,8 +47,6 @@ export class TicTacToeComponent {
       this.turnO = !this.turnO;
       this.checkWinner();
 
-    console.log("computer", this.turnO);
-    console.log("with computer", this.withComputer);
     if(!this.turnO && this.withComputer){
       setTimeout(() => {
         this.computer();

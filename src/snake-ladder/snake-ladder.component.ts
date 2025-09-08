@@ -167,7 +167,6 @@ export class SnakeLadderComponent {
       }, 1000);
     }
     if(!this.turnPlayer1){
-      console.log("before roll computer",this.turnPlayer1)
       setTimeout(() => {
         if (this.withComputer && this.turnComputer) {
           this.rollComputer();
@@ -263,7 +262,6 @@ export class SnakeLadderComponent {
   }
 
   rollComputer() {
-    console.log("computer", this.turnComputer);
     if (this.turnComputer) {
       if (this.isRolling2) return;
       this.isRolling2 = true;
